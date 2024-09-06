@@ -31,7 +31,9 @@ check_python_version() {
   python_path=$(command -v python)
   echo -e "${YELLOW}${BOLD}[INFO] Python path available on ${HOME} to use:${STOP_COLOR} '${python_path}'"
 
-  INSTALLED_PYTHON_VERSION=$('${python_path}' --version 2>&1)
+  INSTALLED_PYTHON_VERSION=$("${python_path}" --version 2>&1)
+
+  echo "INSTALLED_PYTHON_VERSION"
 
   if [[ ${INSTALLED_PYTHON_VERSION} =~ Python\ ([0-9]+\.[0-9]+) ]]; then
     installed_version="${BASH_REMATCH[1]}"
