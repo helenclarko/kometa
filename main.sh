@@ -101,7 +101,9 @@ install_kometa() {
     git clone https://github.com/Kometa-Team/Kometa.git "${CONFIG_DIR}" >/dev/null 2>&1
 
     if [[ -f "${TEMPLATE_FILE}" ]]; then
+        echo -e "${YELLOW}${BOLD}[INFO] ${APPNAME} config template located at${STOP_COLOR} '${CONFIG_DIR}/config/config.yml.template'"
         mv "${TEMPLATE_FILE}" "${CONFIG_FILE}"
+        echo -e "${YELLOW}${BOLD}[INFO] ${APPNAME} config template file moved to${STOP_COLOR} '${CONFIG_DIR}/config/config.yml'"
     else
         echo -e "${RED}${BOLD}[ERROR] Config template file does not exist"
         exit 1
