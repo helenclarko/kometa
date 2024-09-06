@@ -101,7 +101,7 @@ install_kometa() {
     git clone https://github.com/Kometa-Team/Kometa.git "${CONFIG_DIR}" >/dev/null 2>&1
 
     if [[ -f "${TEMPLATE_FILE}" ]]; then
-        mv "${CONFIG_FILE}" "${TEMPLATE_FILE}"
+        mv "${TEMPLATE_FILE}" "${CONFIG_FILE}"
     else
         echo -e "${RED}${BOLD}[ERROR] Config template file does not exist"
         exit 1
