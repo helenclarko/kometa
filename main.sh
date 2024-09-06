@@ -14,6 +14,7 @@ STOP_COLOR=$(tput sgr0)
 
 CONFIG_DIR="$HOME/scripts/kometa"
 CONFIG_FILE="${CONFIG_DIR}/config/config.yml"
+TEMPLATE_FILE="${CONFIG_DIR}/config/config.yml.template"
 PLEX_PREFS_FILE="${HOME}/.config/plex/Library/Application Support/Plex Media Server/Preferences.xml"
 TMPDIR_LOCATION="$HOME/.tmp/kometa-$(date +%Y%m%d-%H%M%S)"
 
@@ -98,6 +99,13 @@ install_kometa() {
     echo -e "${MAGENTA}${BOLD}[STAGE-1] Download ${APPNAME} config and configure${STOP_COLOR}"
     mkdir -p "${CONFIG_DIR}"
     git clone https://github.com/Kometa-Team/Kometa.git "${CONFIG_DIR}" >/dev/null 2>&1
+
+    if [[ -f "${TEMPLATE_FILE}" ]]; then
+        mv "${CONFIG_FILE}" "${TEMPLATE_FILE}"
+    else
+        echo -e "${RED}${BOLD}[ERROR] Config template file does not exist"
+        exit 1
+    fi
 
     if [[ -f "${CONFIG_FILE}" ]]; then
         echo -e "${YELLOW}${BOLD}[INFO] ${APPNAME} config located at${STOP_COLOR} '${CONFIG_DIR}/config'"
