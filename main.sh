@@ -164,7 +164,7 @@ After=multi-user.target
 Type=simple
 Restart=always
 RestartSec=3
-ExecStart=${INSTALLED_PYTHON_PATH} %h/scripts/${APPNAME}/main.py -c %h/scripts/${APPNAME}/config/config.yml
+ExecStart=${INSTALLED_PYTHON_PATH} %h/scripts/${APPNAME}/kometa.py -c %h/scripts/${APPNAME}/config/config.yml
 StandardOutput=file:%h/scripts/${APPNAME}/kometa.log
 
 [Install]
